@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  schedule:
+    - cron: "5 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - uses: pyTooling/Actions/releaser@r0
+        with:
+          files: ./dist/index.js
+          rm: true
+          tag: latest
+          token: ${{ secrets.GITHUB_TOKEN }}
