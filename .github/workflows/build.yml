@@ -21,7 +21,7 @@ jobs:
 
       - uses: pyTooling/Actions/releaser@r0
         with:
-          files: ./bin/build.js
+          files: ./bin/*.js
           rm: true
           tag: latest
           token: ${{ secrets.GITHUB_TOKEN }}
