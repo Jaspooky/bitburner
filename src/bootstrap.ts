@@ -1,8 +1,8 @@
-import type { BitBurner } from "BitBurner";
+import { NS } from "../lib/BitBurner";
 import { UPSTREAM_RELEASE_URL } from "./config";
 import { request } from "./util";
 
-export const main = async (ns: BitBurner) => {
+export const main = async (ns: NS) => {
   const { assets } = await request(UPSTREAM_RELEASE_URL);
 
   for (const asset of assets) {
